@@ -4,7 +4,7 @@
   <h4 class="modal-title" id="myModalLabel">Envio Parcial de unidades</h4>
 </div>
 
-{!! Form::open(array('route' => ['envios.enviar_parcial'], 'method' => 'get')) !!}
+{!! Form::open(array('route' => ['solicitudes.enviar_parcial'], 'method' => 'get')) !!}
 
 <input id="id" name="id" type="hidden" value="{{$det->id_solicitud}}">
 <input id="id_detalle" name="id_detalle" type="hidden" value="{{ $det->id_detalle }}">
@@ -66,6 +66,29 @@
 			</div>
 		</div>
 	</div>
+	<br>
+	<div class=" row">
+		<div class="col-md-12">
+			
+			<div class="col-md-6">
+				<div class="form-group">
+				    <label class="control-label col-md-6" >Responsable de envio </label>
+				    <div class="col-md-6">
+				    	{!! Form::text('resp',null,['class'=> 'form-control','placeholder'=>'Ingrese cantidad','required'])!!}
+				    </div>
+	 			</div>
+			</div>
+			<div class="col-md-6">
+				<div class="form-group">
+				    <label class="control-label col-md-6" >transportadora: </label>
+				    <div class="col-md-6">
+				    	{!! Form::text('transp',null,['class'=> 'form-control','placeholder'=>'Ingrese cantidad','required'])!!}
+				    </div>
+	 			</div>
+			</div>
+		</div>
+	</div>
+
 </div>
 
 

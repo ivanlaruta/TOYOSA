@@ -7,11 +7,8 @@
           <div class="page-title">
               <div class="title_left">
                 <h2>
-                @if($env->estado == '1')<a href="{{ route('envios.index')}}">BORRADORES /  </a>@endif
-                    @if($env->estado == '2') <a href="{{ route('envios.index')}}">EN ESPERA DE APROBACION /  </a> @endif
-                    @if($env->estado == '3')<a href="{{ route('envios.index')}}">APROBADOS /  </a>@endif
-                    @if($env->estado == '4')<a href="{{ route('envios.index')}}">APROBADOS EN ENVIO /  </a>@endif
-                    <a href="{{ route('envios.detalle',$id)}}">ENVIO {{$env->id_solicitud}} </a>
+             <a href="{{ route('envios.index')}}">SOLICITUDES /  </a>
+                    <a href="{{ route('envios.detalle',$id)}}">SOLICITUD {{$env->id_solicitud}} </a>
                 </h2>
               </div>
 

@@ -37,7 +37,7 @@
                   <div class="x_title">
                     <h2>
                     
-                    <small>Datos generales</small>
+                    Datos generales
                     </h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-down"></i></a>
@@ -103,7 +103,7 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2><small>Agregar Unidades</small></h2>
+                    <h2>Agregar Unidades</h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i @if(is_null($request->marca)) class="fa fa-chevron-down" @else class="fa fa-chevron-up" @endif ></i></a>
                       </li>
@@ -293,7 +293,7 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel ">
                   <div class="x_title">
-                    <h2><small>Selecciones agrgadas</small></h2>
+                    <h2>Selecciones agrgadas</h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
@@ -396,7 +396,7 @@
                           <div class="btn-group btn-group-justified">
                             <a href="{{ route('solicitudes.index')}}" class=" btn btn-warning btn-round">GUARDAR COMO BORRADOR</a>
 
-                            <a href="{{ route('solicitudes.espera',$env)}}" onclick ="return confirm('Se reserveran unidades con las caracterisiticas solicitadas de forma automaticam. ¿Desea continuar?')"   @if($det->isEmpty()) class="btn btn-primary btn-round disabled" @else  class="btn btn-primary btn-round" @endif>GUARDAR Y ESPERAR APROBACION</a>
+                            <a href="{{ route('solicitudes.espera',$env)}}" onclick ="return confirm('Se realizara  una selección automática de unidades y se las reservara. ¿Desea continuar?')"   @if($det->isEmpty()) class="btn btn-primary btn-round disabled" @else  class="btn btn-primary btn-round" @endif>GUARDAR Y ESPERAR APROBACION</a>
 
                             <a href="" @if($det->isEmpty()) class="btn btn-success btn-round disabled" @else  class=" btn btn-success btn-round" @endif>GUARDAR Y APROBAR</a>
                             
@@ -421,7 +421,7 @@
                         </div>
                         @endif
 
-                        @if($env->estado == '3' || $env->estado == '4')
+                        {{-- @if($env->estado == '3' || $env->estado == '4')
                         <div class="form-group">
                         <div class="col-md-12">
                           <div class="btn-group btn-group-justified">
@@ -435,7 +435,7 @@
                         </div>
 
 
-                        @endif
+                        @endif --}}
                         
 
                         <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">

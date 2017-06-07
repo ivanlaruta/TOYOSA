@@ -139,4 +139,32 @@ Route::group(['prefix'=>'distribuidor','middleware'=>'auth'],function(){
 
 	route::resource('stocks','AsignacionStocksController');
 
+
+	route::get('envios/{id}/detalle',[
+		'uses' =>'EnviosController@detalle',
+		'as'   =>	'envios.detalle'
+	]);
+
+	route::get('envios/{id}/{id2}/detalle_all',[
+		'uses' =>'EnviosController@detalle_all',
+		'as'   =>	'envios.detalle_all'
+	]);
+
+	route::get('envios/{id}/enviar',[
+		'uses' =>'EnviosController@enviar',
+		'as'   =>	'envios.enviar'
+	]);
+
+	route::get('envios/{id}/envio_parcial',[
+		'uses' =>'EnviosController@envio_parcial',
+		'as'   =>	'envios.envio_parcial'
+	]);
+
+	route::get('envios/modal_parcial',[
+		'uses' =>'EnviosController@modal_parcial',
+		'as'   =>	'envios.modal_parcial'
+	]);
+	
+	route::resource('envios','EnviosController');
+
 });

@@ -33,6 +33,18 @@
                     </ul>
                   </li>
 
+                  <li><a><i class="fa fa-table"></i> Envios <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      
+                      {{-- <li><a href="{{ route('solicitudes.index_espera')}}">En espera de aprobacion</a></li>
+                      <li><a href="{{ route('solicitudes.index_aprobados')}}">Aprobados</a></li> --}}
+                    
+                      <li><a href="{{ route('envios.index')}}">Estado Envio de solciitudes </a></li>
+                      <li><a href="#">Lista de envios </a></li>
+                    
+                    </ul>
+                  </li>
+
                   <li><a><i class="fa fa-desktop"></i> Alertas <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                             <li><a href="#">Reposicion Regular</a></li>

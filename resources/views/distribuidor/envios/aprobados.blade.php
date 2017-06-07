@@ -4,10 +4,18 @@
         
   <div class="right_col" role="main">
           <div class="">
-              <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="page-title">
+              <div class="title_left">
+                <h3>ESTADO DE SOLICITUDES / <small>Lista de Solicitudes</small></h3>
+              </div>
+
+              
+            </div>
+
+            <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>APROBADOS <small>Envios</small></h2>
+                    <h2>APROBADOS</h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
@@ -24,40 +32,37 @@
                      
                       <thead>
                         <tr>
-                          <th>Envio</th>
+                          <th>Solicitud</th>
                           <th>Origen</th>
                           <th>Destino</th>
                           <th>Tipo</th>
                           <th>Creacion</th>
                           <th>Aprobacion</th>
-                          <th>Envio</th>
+                          <th>Solicitud</th>
                           <th>Estado</th>
-
-                         
-                          
                         </tr>
                       </thead>
                         
                       <tbody>
-                        @foreach($env as $envs)
-                        <tr @if($envs -> estado_envio == '3') class="clickable-row danger" @endif
-                            @if($envs -> estado_envio == '4') class="clickable-row warning" @endif
-                            @if($envs -> estado_envio == '5') class="clickable-row info" @endif
-                            @if($envs -> estado_envio == '6') class="clickable-row success" @endif
-                            id="clickable-row" data-href="{{ route('envios.detalle',$envs-> id_envio )}}" >    
+                        @foreach($env_aprob as $envs2)
+                        <tr @if($envs2 -> estado == '3') class="clickable-row danger" @endif
+                            @if($envs2 -> estado == '4') class="clickable-row warning" @endif
+                            @if($envs2 -> estado == '5') class="clickable-row info" @endif
+                            @if($envs2 -> estado == '6') class="clickable-row success" @endif
+                            id="clickable-row" data-href="{{ route('envios.detalle',$envs2-> id_solicitud )}}" >    
 
-                          <td>{{ $envs-> id_envio }}</td>
-                          <td>{{ $envs -> origen }}</td>
-                          <td>{{ $envs -> destino }}</td>
-                          <td>{{ $envs -> tipo}}</td>
-                          <td>{{ date('d-m-Y',strtotime($envs -> fecha_creacion)) }}</td>
-                          <td>{{ date('d-m-Y',strtotime($envs -> fecha_aprobado)) }}</td>
-                          <td>@if(is_null($envs -> fecha_envio)) --- @else {{ date('d-m-Y',strtotime($envs -> fecha_envio)) }}@endif</td>
+                          <td>{{ $envs2-> id_solicitud }}</td>
+                          <td>{{ $envs2 -> origen }}</td>
+                          <td>{{ $envs2 -> destino }}</td>
+                          <td>{{ $envs2 -> tipo}}</td>
+                          <td>{{ date('d-m-Y',strtotime($envs2 -> fecha_creacion)) }}</td>
+                          <td>{{ date('d-m-Y',strtotime($envs2 -> fecha_aprobado)) }}</td>
+                          <td>@if(is_null($envs2 -> fecha_envio)) --- @else {{ date('d-m-Y',strtotime($envs2 -> fecha_envio)) }}@endif</td>
                           <td>
-                            @if($envs -> estado_envio == '3')Sin enviar @endif
-                            @if($envs -> estado_envio == '4')Envio Incompleto @endif
-                            @if($envs -> estado_envio == '5')Envio completo @endif
-                            @if($envs -> estado_envio == '6')Finalizado @endif
+                            @if($envs2 -> estado == '3')Sin enviar @endif
+                            @if($envs2 -> estado == '4')Solicitud Incompleta @endif
+                            @if($envs2 -> estado == '5')Solicitud completa @endif
+                            @if($envs2 -> estado == '6')Finalizado @endif
                           </td>
                           
                         </tr>

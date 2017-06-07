@@ -12,7 +12,7 @@
                   <div class="x_title">
                     <h2>
                     
-                   <a href="{{ route('envios.detalle',$id)}}">ENVIO {{$id}} / </a>HOJA DE ENVIO PARCIAL /
+                   <a href="{{ route('envios.detalle',$id)}}">SOLICITUD {{$id}} / </a>HOJA DE ENVIO PARCIAL /
                     <small>Datos generales</small>
                     </h2>
                     <ul class="nav navbar-right panel_toolbox">
@@ -78,7 +78,7 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel ">
                   <div class="x_title">
-                    <h2>ENVIO DE UNIDADES <small>Asignacion de envios parciales.</small></h2>
+                    <h2>ENVIO DE UNIDADES <small>Asignacion de solicitudes parciales.</small></h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
@@ -132,24 +132,17 @@
 
                         @endif                       
                         @endforeach
-                       
+    
                       </tbody>
                     </table>
-
 
                     <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
                           <div class="modal-dialog modal-lg">
                             <div class="modal-content">
-                          
-
-                              
-                            
+                         
                             </div>
                           </div>
                         </div>
-
-
-                    
                   </div>
                       
                     

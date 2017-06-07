@@ -12,7 +12,7 @@
                   <div class="x_title">
                     <h2>
                     
-                   <a href="{{ route('solicitudes.detalle',$id)}}">ENVIO {{$id}} / </a>HOJA DE ENVIO PARCIAL /
+                   <a href="{{ route('solicitudes.detalle',$id)}}">SOLICITUD {{$id}} / </a>HOJA DE ENVIO PARCIAL /
                     <small>Datos generales</small>
                     </h2>
                     <ul class="nav navbar-right panel_toolbox">
