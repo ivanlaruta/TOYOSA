@@ -13,7 +13,7 @@
                     @if($env->estado == '3')<a href="{{ route('solicitudes.index')}}">APROBADOS /  </a>@endif
                     @if($env->estado == '4')<a href="{{ route('solicitudes.index')}}">APROBADOS - ENVIADOS PARCIALMENTE /  </a>@endif
                     @if($env->estado == '5')<a href="{{ route('solicitudes.index')}}">APROBADOS - ENVIADOS COMPLETOS /  </a>@endif
-                    SOLICITUD {{$env->id_solicitud}} 
+                    <small class="text-danger" ><u>SOLICITUD {{$env->id_solicitud}} </u></small>
 
                 </h2>
               </div>
@@ -293,7 +293,7 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel ">
                   <div class="x_title">
-                    <h2>Selecciones agrgadas</h2>
+                    <h2>Detalle de solicitud</h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
@@ -316,8 +316,8 @@
                           <th>Modelo</th>
                           <th>Master</th>
                           <th>Año</th> 
-                          <th>Exterior</th>
-                          <th>Interior</th>
+                          <th>Color Exterior</th>
+                          <th>Color Interior</th>
                           <th>Cant Solicitada</th>
                           @if($env->estado > '2') 
                           <th>Cant Aprobada </th> 
@@ -396,7 +396,7 @@
                           <div class="btn-group btn-group-justified">
                             <a href="{{ route('solicitudes.index')}}" class=" btn btn-warning btn-round">GUARDAR COMO BORRADOR</a>
 
-                            <a href="{{ route('solicitudes.espera',$env)}}" onclick ="return confirm('Se realizara  una selección automática de unidades y se las reservara. ¿Desea continuar?')"   @if($det->isEmpty()) class="btn btn-primary btn-round disabled" @else  class="btn btn-primary btn-round" @endif>GUARDAR Y ESPERAR APROBACION</a>
+                            <a href="{{ route('solicitudes.espera',$env)}}" onclick ="return confirm('El sistema seleccionara unidades automáticamente y se las reservara. ¿Desea continuar?')"   @if($det->isEmpty()) class="btn btn-primary btn-round disabled" @else  class="btn btn-primary btn-round" @endif>GUARDAR Y ESPERAR APROBACION</a>
 
                             <a href="" @if($det->isEmpty()) class="btn btn-success btn-round disabled" @else  class=" btn btn-success btn-round" @endif>GUARDAR Y APROBAR</a>
                             
@@ -409,11 +409,13 @@
                         <div class="form-group">
                         <div class="col-md-12">
                           <div class="btn-group btn-group-justified">
-                            <a href="" class=" btn btn-warning btn-round">DESRESERVAR Y VOLVER A BORRADOR</a>
 
-                            <a href="{{ route('solicitudes.aprobar',$env)}}" class="btn btn-primary btn-round">APROBAR</a>
-
-                            <a href="" class="btn btn-success btn-round">APROBAR Y ENVIAR</a>
+                            <a href="{{ route('solicitudes.index')}}" class="btn btn-primary btn-round">PAGINA ANTERIOR</a>
+                            
+                            @if(Auth::user()->rol=='1' ||  Auth::user()->rol=='3')
+                            <a href="{{ route('solicitudes.aprobar',$env)}}" class="btn btn-success btn-round">APROBAR</a>
+                            @endif
+                            
                             
                           </div>  
                                                
@@ -421,63 +423,24 @@
                         </div>
                         @endif
 
-                        {{-- @if($env->estado == '3' || $env->estado == '4')
+                        @if($env->estado >= '3' )
                         <div class="form-group">
                         <div class="col-md-12">
                           <div class="btn-group btn-group-justified">
-                            <a href="{{ route('solicitudes.index')}}" class=" btn btn-warning btn-round">VOLVER</a>
-                            <a href="{{ route('solicitudes.envio_parcial',$env)}}" class="btn btn-primary btn-round">REALIZAR ENVIO PARCIAL </a>
-                            <a href="" class="btn btn-success btn-round" data-toggle="modal" data-target=".bs-example-modal-lg" >ENVIAR TODO</a>
-                            
+                            <a href="{{ route('solicitudes.index')}}" class=" btn btn-primary btn-round">PAGINA ANTERIOR</a>
+                             @if(Auth::user()->rol=='1' ||  Auth::user()->rol>'3')
+                            <a href="{{ route('envios.index')}}" class="btn btn-warning btn-round">VER EN ENVIOS </a>
+                            @endif
                           </div>  
                                                
                         </div>
                         </div>
 
 
-                        @endif --}}
+                        @endif 
                         
 
-                        <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
-                          <div class="modal-dialog modal-lg">
-                            <div class="modal-content">
-                            {!! Form::open(array('route' => ['solicitudes.enviar',$env->id_solicitud], 'method' => 'get')) !!}﻿
-
-                              <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
-                                </button>
-                                <h4 class="modal-title" id="myModalLabel">Datos de Envio</h4>
-                              </div>
-                              <div class="modal-body">
-                              
-                              <p>Todas las unidades de esta solicitud se registraran con la fecha estimada de arribo que seleccionara, Ademas la solicitud se registraga como solicitud completa, es decir que todas las unidades se enviaran conjuntamente.</p>
-                              
-                                 
-                                 <fieldset>
-                                  <div class="control-group">
-                                  <label class="control-label col-md-2 col-md-offset-3" >Fecha estimada de arribo :</label>
-                                  <div class="col-md-4 ">
-                                    <div class="controls">
-                                      <div class="col-md-11 xdisplay_inputx form-group has-feedback">
-                                        <input type="text" name = "f_env" class="form-control has-feedback-left" id="f_env" aria-describedby="inputSuccess2Status2">
-                                        <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
-                                        <span id="inputSuccess2Status2" class="sr-only">(success)</span>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  </div>
-                                </fieldset>
-
-                              </div>
-                              <div class="modal-footer">
-                                
-                                <button type="submit" class="btn btn-success "> ENVIAR </button>
-                              </div>
-                            {!! Form::close()!!}
-                            </div>
-                          </div>
-                        </div>
-  
+                       
                       </div>
                       <hr>
                       <br>

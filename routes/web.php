@@ -28,30 +28,30 @@ Route::get('/inicial', 'SesionController@index');
 
 Route::group(['prefix'=>'distribuidor','middleware'=>'auth'],function(){
 
-	route::get('solicitudes/enviar_parcial',[
-		'uses' =>'SolicitudesController@enviar_parcial',
-		'as'   =>	'solicitudes.enviar_parcial'
-	]);
+	// route::get('solicitudes/enviar_parcial',[
+	// 	'uses' =>'SolicitudesController@enviar_parcial',
+	// 	'as'   =>	'solicitudes.enviar_parcial'
+	// ]);
 	
 	route::get('solicitudes/{id}/enviar',[
 		'uses' =>'SolicitudesController@enviar',
 		'as'   =>	'solicitudes.enviar'
 	]);
 
-	route::get('solicitudes/{id}/envio_parcial',[
-		'uses' =>'SolicitudesController@envio_parcial',
-		'as'   =>	'solicitudes.envio_parcial'
-	]);
+	// route::get('solicitudes/{id}/envio_parcial',[
+	// 	'uses' =>'SolicitudesController@envio_parcial',
+	// 	'as'   =>	'solicitudes.envio_parcial'
+	// ]);
 
-	route::get('solicitudes/modal_parcial',[
-		'uses' =>'SolicitudesController@modal_parcial',
-		'as'   =>	'solicitudes.modal_parcial'
-	]);
+	// route::get('solicitudes/modal_parcial',[
+	// 	'uses' =>'SolicitudesController@modal_parcial',
+	// 	'as'   =>	'solicitudes.modal_parcial'
+	// ]);
 
-	route::get('solicitudes/index_aprobados',[
-		'uses' =>'SolicitudesController@index_aprobados',
-		'as'   =>	'solicitudes.index_aprobados'
-	]);
+	// route::get('solicitudes/index_aprobados',[
+	// 	'uses' =>'SolicitudesController@index_aprobados',
+	// 	'as'   =>	'solicitudes.index_aprobados'
+	// ]);
 
 	route::get('solicitudes/{id}/aprobar',[
 		'uses' =>'SolicitudesController@aprobar',
@@ -160,11 +160,39 @@ Route::group(['prefix'=>'distribuidor','middleware'=>'auth'],function(){
 		'as'   =>	'envios.envio_parcial'
 	]);
 
+	
+	// route::get('envios/{id}/{id2}/modal_parcial',[
+	// 	'uses' =>'EnviosController@modal_parcial',
+	// 	'as'   =>	'envios.modal_parcial'
+	// ]);
+
 	route::get('envios/modal_parcial',[
 		'uses' =>'EnviosController@modal_parcial',
 		'as'   =>	'envios.modal_parcial'
 	]);
+
+	route::get('envios/enviar_parcial',[
+		'uses' =>'EnviosController@enviar_parcial',
+		'as'   =>	'envios.enviar_parcial'
+	]);
+	route::get('envios/envios_lista',[
+		'uses' =>'EnviosController@envios_lista',
+		'as'   =>	'envios.envios_lista'
+	]);
+	route::get('envios/{id}/detalle_envio',[
+		'uses' =>'EnviosController@detalle_envio',
+		'as'   =>	'envios.detalle_envio'
+	]);
 	
+
+	//============= PDF ==========================
+
+	route::get('envios/{id}/getPDF',[
+		'uses' =>'PDFController@getPDF',
+		'as'   =>	'envios.getPDF'
+	]);
+
+	//============================================
 	route::resource('envios','EnviosController');
 
 });

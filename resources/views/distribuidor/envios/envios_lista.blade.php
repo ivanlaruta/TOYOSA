@@ -6,7 +6,7 @@
           <div class="">
           <div class="page-title">
               <div class="title_left">
-                <h3>ESTADO DE SOLICITUDES / <small>Lista de Solicitudes</small></h3>
+                <h3>ENVIOS / <small>Lista de Envios</small></h3>
               </div>
 
               
@@ -15,7 +15,7 @@
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>APROBADOS</h2>
+                    <h2>ENVIOS</h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
@@ -32,38 +32,29 @@
                      
                       <thead>
                         <tr>
+                          <th>Envio</th>
                           <th>Solicitud</th>
+                          <th>nro Detalle</th>
                           <th>Origen</th>
                           <th>Destino</th>
-                          <th>Tipo</th>
-                          <th>Creacion</th>
-                          <th>Aprobacion</th>
-                          <th>Solicitud</th>
-                          <th>Estado</th>
+                          <th>Fecha envio</th>
+                          <th>Fecha est arribo</th>
+                          <th>Responsable</th>
+                          
                         </tr>
                       </thead>
                         
                       <tbody>
-                        @foreach($env_aprob as $envs2)
-                        <tr @if($envs2 -> estado == '3') class="clickable-row danger" @endif
-                            @if($envs2 -> estado == '4') class="clickable-row warning" @endif
-                            @if($envs2 -> estado == '5') class="clickable-row info" @endif
-                            @if($envs2 -> estado == '6') class="clickable-row success" @endif
-                            id="clickable-row" data-href="{{ route('envios.detalle',$envs2-> id_solicitud )}}" >    
-
-                          <td>{{ $envs2-> id_solicitud }}</td>
-                          <td>{{ $envs2 -> origen }}</td>
-                          <td>{{ $envs2 -> destino }}</td>
-                          <td>{{ $envs2 -> tipo}}</td>
-                          <td>{{ date('d-m-Y',strtotime($envs2 -> fecha_creacion)) }}</td>
-                          <td>{{ date('d-m-Y',strtotime($envs2 -> fecha_aprobado)) }}</td>
-                          <td>@if(is_null($envs2 -> fecha_envio)) --- @else {{ date('d-m-Y',strtotime($envs2 -> fecha_envio)) }}@endif</td>
-                          <td>
-                            @if($envs2 -> estado == '3')Sin enviar @endif
-                            @if($envs2 -> estado == '4')Envio parcial @endif
-                            @if($envs2 -> estado == '5')Envio completo @endif
-                            @if($envs2 -> estado == '6')Finalizado @endif
-                          </td>
+                        @foreach($envios as $envs2)
+                       <tr class='clickable-row' data-href="{{ route('envios.detalle_envio',$envs2-> id_envio )}}" > 
+                          <td>{{ $envs2-> id_envio }}</td>
+                          <td>{{ $envs2 -> id_solicitud }}</td>
+                          <td>{{ $envs2 -> id_detalle }}</td>
+                          <td>{{ $envs2 -> origen}}</td>
+                          <td>{{ $envs2 -> destino}}</td>
+                          <td>{{ date('d-m-Y',strtotime($envs2 -> fecha_envio)) }}</td>
+                          <td>{{ date('d-m-Y',strtotime($envs2 -> fecha_estimada_arribo)) }}</td>
+                          <td>{{ $envs2 -> responsable}}</td>
                           
                         </tr>
                         @endforeach

@@ -145,7 +145,7 @@
                           <th>Creacion</th>
                           <th>Aprobacion</th>
                           <th>Solicitud</th>
-                          <th>Estado</th>
+                          <th>Estado de Envio</th>
                         </tr>
                       </thead>
                         
@@ -166,8 +166,8 @@
                           <td>@if(is_null($envs2 -> fecha_envio)) --- @else {{ date('d-m-Y',strtotime($envs2 -> fecha_envio)) }}@endif</td>
                           <td>
                             @if($envs2 -> estado == '3')Sin enviar @endif
-                            @if($envs2 -> estado == '4')Solicitud Incompleta @endif
-                            @if($envs2 -> estado == '5')Solicitud completa @endif
+                            @if($envs2 -> estado == '4')Envio parcial @endif
+                            @if($envs2 -> estado == '5')Envio completo @endif
                             @if($envs2 -> estado == '6')Finalizado @endif
                           </td>
                           

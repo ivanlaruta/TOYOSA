@@ -4,7 +4,27 @@
 <!-- page content -->
         <div class="right_col" role="main">
           <div class="">
-            
+            <div class="page-title">
+              <div class="title_left">
+                <h2>
+                
+                    @if($env->estado == '3')<a href="{{ route('solicitudes.index')}}">APROBADOS /  </a>@endif
+                    @if($env->estado == '4')<a href="{{ route('solicitudes.index')}}">APROBADOS EN ENVIO /  </a>@endif
+                    <a href="{{ route('solicitudes.detalle',$id)}}">SOLICITUD {{$env->id_solicitud}} / </a><small>Unidades reservadas</small>
+                </h2>
+              </div>
+
+              <div class="title_right">
+                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                  <div class="input-group">
+                    <input type="text" class="form-control" placeholder="...">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button">Buscar</button>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
             
             <div class="row">
 
@@ -13,8 +33,7 @@
                   <div class="x_title">
                     <h2>
                     
-                   <a href="{{ route('solicitudes.detalle',$id)}}">ENVIO {{$id}} / </a>HOJA DE APROBACION /
-                    <small>Datos generales</small>
+                   Datos generales
                     </h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-down"></i></a>
@@ -80,7 +99,7 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel ">
                   <div class="x_title">
-                    <h2>APROBACION DE UNIDADES <small>Unidades reservadas por aprobar</small></h2>
+                    <h2>Unidades reservadas por aprobar</h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
@@ -159,7 +178,7 @@
                         <div class="form-group">
                         <div class="col-md-12">
                           <div class="btn-group btn-group-justified">
-                            <a href="" class= "btn btn-danger btn-round"  >CANCELAR</a>
+                            <a href="{{ route('solicitudes.detalle',$id)}}" class= "btn btn-danger btn-round"  >CANCELAR</a>
                             <a href="{{ route('solicitudes.aprobacion',$env)}}" @if($a == 1 ) class= "btn btn-warning btn-round" @else class= "btn btn-success btn-round" @endif >APROBAR</a>
                             
                           </div>

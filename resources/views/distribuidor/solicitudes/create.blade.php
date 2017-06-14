@@ -6,7 +6,7 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Envios</h3>
+                <h3>SOLICITUD</h3>
               </div>
 
               <div class="title_right">
@@ -27,7 +27,7 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Generacion de solicitudes <small>Nuevo envio</small></h2>
+                    <h2>Generacion de solicitud <small>Datos generales</small></h2>
                     <ul class="nav navbar-right panel_toolbox">
                       
                       </li>

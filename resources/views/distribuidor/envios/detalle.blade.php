@@ -10,7 +10,7 @@
                 <h2>
                
                     <a href="{{ route('envios.index')}}">SOLICITUDES  / </a>
-                    SOLICITUD {{$env->id_solicitud}} 
+                    <small>SOLICITUD {{$env->id_solicitud}} </small>
 
                 </h2>
               </div>
@@ -171,6 +171,7 @@
                         <div class="panel-footer">
                             <span class="pull-left">Ver todas las unidades reservadas por esta solicitud</span>
                             <span class="pull-right"><i class="fa fa-car"></i></span>
+
                             <div class="clearfix"></div>
                         </div>
                       </a>
@@ -193,18 +194,24 @@
 
                         
 
-                       
+                       @if($env->estado < '5' )
                         <div class="form-group">
                         <div class="col-md-12">
                           <div class="btn-group btn-group-justified">
-                            <a href="{{ route('envios.index')}}" class=" btn btn-warning btn-round">VOLVER</a>
-                            <a href="{{ route('envios.envio_parcial',$env)}}" class="btn btn-primary btn-round">REALIZAR ENVIO PARCIAL </a>
+                            <a href="{{ route('envios.index')}}" class=" btn btn-primary btn-round">PAGINA ANTERIOR</a>
+                            <a href="{{ route('envios.envio_parcial',$env)}}" class="btn btn-warning btn-round">REALIZAR ENVIO PARCIAL </a>
+                            @if($env->estado == '3' )
                             <a href="" class="btn btn-success btn-round" data-toggle="modal" data-target=".bs-example-modal-lg" >ENVIAR TODO</a>
+                            @else
+                            <a href="" class="btn btn-success btn-round" >VER ENVIOS DE SOLICITUD</a>
+                            @endif
+                            
                             
                           </div>  
                                                
                         </div>
                         </div>
+                        @endif
 
                         <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
                           <div class="modal-dialog modal-lg">
@@ -234,6 +241,7 @@
                                     </div>
                                   </div>
                                   </div>
+                                  
                                 </fieldset>
 
                               </div>

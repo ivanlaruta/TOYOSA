@@ -103,7 +103,7 @@
                           <th>Año</th> 
                           <th>Exterior</th>
                           <th>Interior</th>
-                          <th>Cantidad aprovada</th>
+                          <th>Cantidad aprobada</th>
                           <th>Cantidad enviada</th>
                           <th>Restante</th>
                           <th></th>
@@ -127,8 +127,10 @@
                         <td>{{ $dets -> cantidad_aprobada}}</td>
                         <td>{{ $dets -> cantidad_enviada}}</td>
                         <td>{{ $dets -> sin_env}}</td>
-                       
-                        <td><a href="#" class=" btn btn-warning btn-round btn-xs btnEnviar" id_detalle = '{{ $dets -> id_detalle}}' id = '{{$id}}' data-toggle="tooltip" data-placement="bottom" title="Asignar cantidad"><i class="fa fa-sign-out"></i></a></td>
+
+                        {{-- <td><a href="{{ route('envios.modal_parcial',['id'=>$id,'id2'=>$dets -> id_detalle ] )}}"  class=" btn btn-danger btn-round btn-xs btnEnviar animated shake" title="Generar envio parcial"><i class="fa fa-sign-out"></i></a></td> --}}
+
+                        <td><a href="#" class=" btn btn-danger btn-round btn-xs btnEnviar animated shake" id_detalle = '{{ $dets -> id_detalle}}' id = '{{$id}}' data-toggle="tooltip" data-placement="bottom" title="Generar envio parcial"><i class="fa fa-sign-out"></i></a></td>
 
                         @endif                       
                         @endforeach
@@ -162,10 +164,12 @@
 
                         
                         <div class="form-group">
-                        <div class="col-md-12">
+                        <div class="col-md-12">   
+                          
                           <div class="btn-group btn-group-justified">
-                            <a href="#" class= "btn btn-primary btn-round "  >TERMINAR </a>
-                           
+                          <a href="{{ route('envios.detalle',$id)}}" class= "btn btn-primary btn-round "  >PAGINA ANTERIOR</a>
+                            <a href="{{ route('envios.index')}}" class= "btn btn-warning btn-round "  >FINALIZAR</a>
+                           <a href="" class="btn btn-success btn-round" >VER ENVIOS DE SOLICITUD</a>
                             
                           </div>
                         </div>

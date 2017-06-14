@@ -8,7 +8,8 @@
               <div class="title_left">
                 <h2>
              <a href="{{ route('envios.index')}}">SOLICITUDES /  </a>
-                    <a href="{{ route('envios.detalle',$id)}}">SOLICITUD {{$env->id_solicitud}} </a>
+                    <a href="{{ route('envios.detalle',$id)}}">SOLICITUD {{$env->id_solicitud}} / </a>
+                    <small>Unidades reservadas</small>
                 </h2>
               </div>
 
@@ -29,7 +30,7 @@
                   <div class="x_title">
                     <h2>
                    
-                   <small>Detalle de unidades reservadas</small></h2>
+                   <small>Unidades</small></h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
@@ -49,11 +50,11 @@
                           <th>Modelo</th>
                           <th>Master</th>
                           <th>Año</th> 
-                          <th>Exterior</th>
-                          <th>Interior</th>
+                          <th>Color Exterior</th>
+                          <th>Color Interior</th>
                           <th>Chassis</th>
-                          <th>Envio</th>
-                          <th>ETA</th>
+                          <th>Fecha de Envio</th>
+                          <th>Fecha est. arribo</th>
                           <th>Estado</th>
                           
                         </tr>
@@ -70,9 +71,15 @@
                         <td>{{ $dets -> vehiculo -> COLOR_EXTERNO }}</td>
                         <td>{{ $dets -> vehiculo -> COLOR_INTERNO }}</td>
                         <td>{{ $dets -> chassis }}</td>
-                        <td>{{ date('d-m-Y',strtotime($dets -> fecha_envio)) }}</td>
-                        <td>{{ date('d-m-Y',strtotime($dets -> fecha_estimada_arribo)) }}</td>
-                        <td>{{ $dets -> estado }}</td>
+                        <td> @if(is_null($dets -> fecha_envio)) --- @else{{ date('d-m-Y',strtotime($dets -> fecha_envio)) }} @endif</td>
+                        <td>@if(is_null($dets -> fecha_envio)) --- @else {{ date('d-m-Y',strtotime($dets -> fecha_estimada_arribo)) }}@endif</td>
+                        <td>
+                        @if( $dets -> estado == 1)Reservado @endif
+                        @if( $dets -> estado == 2)Aprobado @endif
+                        @if( $dets -> estado == 3)Enviado @endif
+                        @if( $dets -> estado == 4)Entregado @endif
+
+                        </td>
                          </tr>                 
                         @endforeach
                         
